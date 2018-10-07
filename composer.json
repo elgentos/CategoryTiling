@@ -1,0 +1,20 @@
+{
+  "name": "elgentos/category-tiling",
+  "description": "Adds tiling display option to categories for showing sub-categories as tiles",
+  "require": {
+    "php": "~7.0|~7.1|~7.2"
+  },
+  "type": "magento2-module",
+  "license": [
+    "OSL-3.0",
+    "AFL-3.0"
+  ],
+  "autoload": {
+    "files": [
+      "Elgentos/CategoryTiling/registration.php"
+    ],
+    "psr-4": {
+      "Elgentos\\CategoryTiling\\": "Elgentos/CategoryTiling"
+    }
+  }
+}
