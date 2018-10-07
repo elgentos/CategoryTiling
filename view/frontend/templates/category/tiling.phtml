@@ -14,6 +14,7 @@
  * @var $block \Elgentos\CategoryTiling\Block\Category\View
  */
 ?>
+<?php if ($block->showTiling()); ?>
 <?php $_helper = $block->getOutputHelper(); ?>
 <?php if ($subcategories = $block->getSubcategories()): ?>
     <div class="categories wrapper grid categories-grid">
@@ -39,4 +40,5 @@
             <?php endforeach; ?>
         </ol>
     </div>
+<?php endif; ?>
 <?php endif; ?>
