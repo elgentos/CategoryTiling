@@ -100,6 +100,10 @@ class View extends \Magento\Catalog\Block\Category\View
             $childrenCategories->addAttributeToSelect('image')
                 ->addAttributeToSelect('image_url')
                 ->addAttributeToSelect('url');
+        } elseif (is_array($childrenCategories)) {
+            foreach ($childrenCategories as $childCategory) {
+                $childCategory->load($childCategory->getId());
+            }
         }
 
         return $childrenCategories;
