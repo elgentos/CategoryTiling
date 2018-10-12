@@ -11,10 +11,10 @@
   ],
   "autoload": {
     "files": [
-      "Elgentos/CategoryTiling/registration.php"
+      "registration.php"
     ],
     "psr-4": {
-      "Elgentos\\CategoryTiling\\": "Elgentos/CategoryTiling"
+      "Elgentos\\CategoryTiling\\": ""
     }
   }
 }
