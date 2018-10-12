@@ -94,9 +94,14 @@ class View extends \Magento\Catalog\Block\Category\View
     public function getSubcategories()
     {
         $category = $this->getCurrentCategory();
-        return $category->getChildrenCategories()
-            ->addAttributeToSelect('image')
-            ->addAttributeToSelect('image_url')
-            ->addAttributeToSelect('url');
+        $childrenCategories = $category->getChildrenCategories();
+
+        if ($childrenCategories instanceof \Magento\Catalog\Model\ResourceModel\Collection\AbstractCollection) {
+            $childrenCategories->addAttributeToSelect('image')
+                ->addAttributeToSelect('image_url')
+                ->addAttributeToSelect('url');
+        }
+
+        return $childrenCategories;
     }
 }
