@@ -1,0 +1,45 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Category view template
+ *
+ * @var $block \Elgentos\CategoryTiling\Block\Category\View
+ */
+?>
+<?php if ($block->showTiling()): ?>
+    <?php $_helper = $block->getOutputHelper(); ?>
+    <?php if ($subcategories = $block->getSubcategories()): ?>
+        <div class="categories wrapper grid categories-grid">
+            <ol class="categories list items category-items">
+                <?php foreach ($subcategories as $subcategory): ?>
+                    <li class="item category category-item">
+                        <div class="category-item-info">
+                            <?php if ($_imgUrl = $subcategory->getImageUrl()): ?>
+                                <a href="<?= $subcategory->getUrl() ?>" class="category photo category-item-photo">
+                                <span class="category-image-container">
+                                    <?php $_imgHtml = '<img src="' . $_imgUrl . '" />'; ?>
+                                    <?php echo $_imgHtml = $_helper->categoryAttribute($subcategory, $_imgHtml, 'image'); ?>
+                                </span>
+                                </a>
+                            <?php endif; ?>
+                            <div class="category details category-item-details">
+                                <strong class="category name category-item-name">
+                                    <a class="category-item-link"
+                                       href="<?= $subcategory->getUrl() ?>"><?= $subcategory->getName() ?></a>
+                                </strong>
+                            </div>
+                        </div>
+                    </li>
+                <?php endforeach; ?>
+            </ol>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>

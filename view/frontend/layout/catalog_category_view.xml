@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Elgentos_CategoryTiling::css/category-tiles.css"/>
+    </head>
+    <body>
+        <referenceContainer name="columns.top">
+            <referenceBlock name="category.cms">
+                <action method="setTemplate">
+                    <argument name="template" xsi:type="string">Elgentos_CategoryTiling::category/cms.phtml</argument>
+                </action>
+            </referenceBlock>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Magento\Catalog\Block\Category\View" name="category.tiling" template="Elgentos_CategoryTiling::category/tiling.phtml" before="category.products" />
+            <referenceBlock name="category.products">
+                <action method="setTemplate">
+                    <argument name="template" xsi:type="string">Elgentos_CategoryTiling::category/products.phtml</argument>
+                </action>
+            </referenceBlock>
+        </referenceContainer>
+    </body>
+</page>

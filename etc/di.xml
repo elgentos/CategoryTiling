@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Catalog\Block\Category\View" type="Elgentos\CategoryTiling\Block\Category\View" />
+
+    <type name="Magento\Catalog\Model\Category\Attribute\Source\Mode">
+        <plugin sortOrder="1" name="elgentosCategoryTilingMode"
+                type="Elgentos\CategoryTiling\Plugin\Model\Category\Attribute\Source\ModePlugin"/>
+    </type>
+</config>

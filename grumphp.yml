@@ -1,0 +1,55 @@
+imports:
+  - resource: 'vendor/mediact/testing-suite/config/default/grumphp.yml'
+
+parameters:
+
+  # Default settings for testing suite tasks
+  composer.strict: true
+  composer.metadata.priority: 1400
+
+  jsonlint.detect_key_conflicts: true
+  jsonlint.metadata.priority: 1200
+
+  xmllint.load_from_net: true
+  xmllint.x_include: true
+  xmllint.dtd_validation: true
+  xmllint.scheme_validation: true
+  xmllint.triggered_by: [xml]
+  xmllint.ignore_patterns:
+    # Uses an incomplete definition, which conflicts when <exclude-pattern>
+    # is defined.
+    - /^phpcs.xml$/
+    - /^phpmd.xml$/
+    - /^phpunit.xml$/
+  xmllint.metadata.priority: 1200
+
+  yamllint.parse_constant: true
+  yamllint.metadata.priority: 1200
+
+  phpcs.standard: ./phpcs.xml
+  phpcs.triggered_by: [php]
+  phpcs.metadata.priority: 1000
+
+  phpmd.exclude: []
+  phpmd.ruleset:
+    - ./phpmd.xml
+  phpmd.triggered_by: [php]
+  phpmd.metadata.priority: 800
+
+  phpstan.autoload_file: ~
+  phpstan.configuration: ./phpstan.neon
+  phpstan.level: 4
+  phpstan.triggered_by: [php]
+  phpstan.metadata.priority: 600
+
+  phpunit.config_file: ./phpunit.xml
+  phpunit.metadata.priority: 400
+
+  securitychecker.lockfile: ./composer.lock
+  securitychecker.format: ~
+  securitychecker.end_point: ~
+  securitychecker.timeout: ~
+  securitychecker.run_always: true
+  securitychecker.metadata.priority: 200
+
+  dependency-guard.metadata.priority: 100
