@@ -1,20 +1,51 @@
 {
-  "name": "elgentos/category-tiling",
-  "description": "Adds tiling display option to categories for showing sub-categories as tiles",
-  "require": {
-    "php": "~7.0|~7.1|~7.2"
-  },
-  "type": "magento2-module",
-  "license": [
-    "OSL-3.0",
-    "AFL-3.0"
-  ],
-  "autoload": {
-    "files": [
-      "registration.php"
+    "name": "elgentos/category-tiling",
+    "description": "Adds tiling display option to categories for showing sub-categories as tiles",
+    "type": "magento2-module",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
     ],
-    "psr-4": {
-      "Elgentos\\CategoryTiling\\": ""
+    "minimum-stability": "stable",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://repo.magento.com/"
+        }
+    ],
+    "require": {
+        "php": "~7.0|~7.1|~7.2|~7.3",
+        "magento/framework": "^102.0|^103.0",
+        "magento/module-catalog": "^103.0|^104.0"
+    },
+    "autoload": {
+        "files": [
+            "src/registration.php"
+        ],
+        "psr-4": {
+            "Elgentos\\CategoryTiling\\": "src"
+        }
+    },
+    "require-dev": {
+        "mediact/testing-suite": "^2.3",
+        "mediact/coding-standard-magento2": "@stable"
+    },
+    "archive": {
+        "exclude": [
+            "/.gitignore",
+            "/grumphp.yml",
+            "/pdepend.xml",
+            "/phpstan.neon",
+            "/phpunit.xml",
+            "/phpcs.xml",
+            "/phpmd.xml",
+            "/package.json",
+            "/.eslintrc.json",
+            "/.eslintignore",
+            "/tests"
+        ]
+    },
+    "config": {
+        "sort-packages": true
     }
-  }
 }
