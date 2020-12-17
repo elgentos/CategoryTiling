@@ -14,7 +14,7 @@
         }
     ],
     "require": {
-        "php": "~7.0|~7.1|~7.2|~7.3",
+        "php": "~7.3|~7.4",
         "magento/framework": "^103.0",
         "magento/module-catalog": "^104.0"
     },
@@ -23,12 +23,17 @@
             "registration.php"
         ],
         "psr-4": {
-            "Elgentos\\CategoryTiling\\": ""
+            "Elgentos\\CategoryTiling\\": "src"
         }
     },
     "require-dev": {
-        "mediact/testing-suite": "^2.3",
+        "mediact/testing-suite": "@stable",
         "mediact/coding-standard-magento2": "@stable"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Elgentos\\CategoryTiling\\Tests\\": "tests"
+        }
     },
     "archive": {
         "exclude": [
@@ -46,6 +51,9 @@
         ]
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "mediact-testing-suite": {
+            "type": "magento2"
+        }
     }
 }
