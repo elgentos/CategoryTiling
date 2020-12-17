@@ -1,32 +1,33 @@
 <?php
+
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Copyright - elgentos ecommerce solutions (https://elgentos.nl)
  */
 
-// @codingStandardsIgnoreFile
+declare(strict_types=1);
 
-?>
-<?php
 /**
  * Category view template
  *
- * @var $block \Elgentos\CategoryTiling\Block\Category\View
+ * @var $block View
  */
+
+use Elgentos\CategoryTiling\Block\Category\View;
+
 ?>
 <?php if ($block->showTiling()): ?>
-    <?php $_helper = $block->getOutputHelper(); ?>
+    <?php $helper = $block->getOutputHelper(); ?>
     <?php if ($subcategories = $block->getSubcategories()): ?>
         <div class="categories wrapper grid categories-grid">
             <ol class="categories list items category-items">
                 <?php foreach ($subcategories as $subcategory): ?>
                     <li class="item category category-item">
                         <div class="category-item-info">
-                            <?php if ($_imgUrl = $subcategory->getImageUrl()): ?>
+                            <?php if ($imgUrl = $subcategory->getImageUrl()): ?>
                                 <a href="<?= $subcategory->getUrl() ?>" class="category photo category-item-photo">
                                 <span class="category-image-container">
-                                    <?php $_imgHtml = '<img src="' . $_imgUrl . '" />'; ?>
-                                    <?php echo $_imgHtml = $_helper->categoryAttribute($subcategory, $_imgHtml, 'image'); ?>
+                                    <?php $imgHtml = '<img src="' . $imgUrl . '" />'; ?>
+                                    <?php echo $imgHtml = $helper->categoryAttribute($subcategory, $imgHtml, 'image'); ?>
                                 </span>
                                 </a>
                             <?php endif; ?>

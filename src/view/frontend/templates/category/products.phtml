@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * Copyright - elgentos ecommerce solutions (https://elgentos.nl)
+ */
+
+declare(strict_types=1);
+
+/**
+ * Category view template
+ *
+ * @var $block View
+ */
+
+use Elgentos\CategoryTiling\Block\Category\View;
+
+?>
+<?php if ($block->showProducts()): ?>
+    <?= $block->getProductListHtml() ?>
+<?php endif; ?>
