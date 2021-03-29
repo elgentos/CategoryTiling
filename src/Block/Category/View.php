@@ -133,7 +133,7 @@ class View extends \Magento\Catalog\Block\Category\View
     public function getSubcategories(): ?Collection
     {
         $category              = $this->getCurrentCategory();
-        $childrenCategoryIds   = $category->getChildrenCategories()->getAllIds();
+        $childrenCategoryIds   = explode(',', $category->getChildren());
         $additionalCategoryIds = $category->getData('additional_categories')
             ? array_map('trim', explode(',', $category->getData('additional_categories')))
             : [];
