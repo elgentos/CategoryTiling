@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Elgentos\CategoryTiling\Block\Category;
 
+use Elgentos\CategoryTiling\Model\Config;
 use Elgentos\CategoryTiling\Plugin\Model\Category\Attribute\Source\ModePlugin;
 use Magento\Catalog\Helper\Category as CategoryHelper;
 use Magento\Catalog\Helper\Output;
@@ -16,6 +17,7 @@ use Magento\Catalog\Model\Layer\Resolver;
 use Magento\Catalog\Model\ResourceModel\Category\Collection;
 use Magento\Catalog\Model\ResourceModel\Category\CollectionFactory;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\HTTP\PhpEnvironment\Request;
 use Magento\Framework\Registry;
 use Magento\Framework\View\Element\Template\Context;
 
@@ -30,6 +32,8 @@ class View extends \Magento\Catalog\Block\Category\View
      * @var CollectionFactory
      */
     private $collectionFactory;
+
+    private Config $config;
 
     /**
      * View constructor.
@@ -49,9 +53,11 @@ class View extends \Magento\Catalog\Block\Category\View
         CategoryHelper $categoryHelper,
         Output $outputHelper,
         CollectionFactory $collectionFactory,
+        Config $config,
         array $data = []
     ) {
         parent::__construct($context, $layerResolver, $registry, $categoryHelper, $data);
+        $this->config            = $config;
         $this->outputHelper      = $outputHelper;
         $this->collectionFactory = $collectionFactory;
     }
@@ -85,6 +91,12 @@ class View extends \Magento\Catalog\Block\Category\View
      */
     public function showCmsBlock(): bool
     {
+        if ($this->config->showTilingOnFilteredCategoryPage() === false
+            && $this->isFilteredRequest()
+        ) {
+            return false;
+        }
+
         return in_array(
             $this->getCurrentCategory()->getDisplayMode(),
             [
@@ -94,6 +106,17 @@ class View extends \Magento\Catalog\Block\Category\View
                 ModePlugin::DM_TILING_AND_PAGE_AND_PRODUCTS
             ]
         );
+    }
+
+    /**
+     * Whether query parameters are filled in for this request.
+     *
+     * @return bool
+     */
+    private function isFilteredRequest(): bool
+    {
+        $request = $this->getRequest();
+        return $request instanceof Request && $request->getQuery()->count() > 0;
     }
 
     /**
