@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <elgentos_categorytiling>
+            <category>
+                <show_tiling_filtered>1</show_tiling_filtered>
+            </category>
+        </elgentos_categorytiling>
+    </default>
+</config>
