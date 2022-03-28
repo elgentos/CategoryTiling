@@ -126,6 +126,12 @@ class View extends \Magento\Catalog\Block\Category\View
      */
     public function showTiling(): bool
     {
+        if ($this->config->showTilingOnFilteredCategoryPage() === false
+            && $this->isFilteredRequest()
+        ) {
+            return false;
+        }
+        
         return in_array(
             $this->getCurrentCategory()->getDisplayMode(),
             [
