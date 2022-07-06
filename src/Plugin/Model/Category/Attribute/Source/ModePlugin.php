@@ -42,7 +42,7 @@ class ModePlugin
             ],
             [
                 'value' => self::DM_TILING_AND_PAGE_AND_PRODUCTS,
-                'label' => __('Static block products and tiles and products')
+                'label' => __('Static block and tiles and products')
             ],
         ];
 
