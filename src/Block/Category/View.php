@@ -174,7 +174,8 @@ class View extends \Magento\Catalog\Block\Category\View
 
         $collection = $this->collectionFactory->create()
             ->addAttributeToSelect(['name', 'image', 'image_url', 'url'])
-            ->addAttributeToFilter('entity_id', ['in' => $allCategoryIds]);
+            ->addAttributeToFilter('entity_id', ['in' => $allCategoryIds])
+            ->setOrder('position','ASC');
 
         return $collection;
     }
